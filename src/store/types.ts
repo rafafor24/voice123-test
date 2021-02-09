@@ -9,7 +9,12 @@ export interface Query {
     page: number;
 }
 
+export interface ResponseActors {
+    actors: Actor[];
+    pages: number;
+}
 export interface RootState {
     loaded: boolean;
     actors: Actor[];
+    pages: number;
 }

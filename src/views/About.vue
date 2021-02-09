@@ -1,23 +1,43 @@
 <template>
   <div class="about">
-    <h1>This is an about page</h1>
+    <h1>Voice123 Test</h1>
   </div>
-  <textarea
-    placeholder="Term"
-    name="searchbar"
-    rows="1"
-    cols="25"
-    v-model="searchText"
-  ></textarea>
-  <button @click="getActors()">Search🧐</button>
+  <div class="form-group">
+    <label for="usr">Search:</label>
+    <input
+      v-model="searchText"
+      placeholder="Term"
+      type="text"
+      class="form-control"
+      id="usr"
+    />
+    <button type="button" class="btn btn-primary" @click="getActors()">
+      Search🧐
+    </button>
+  </div>
+  <ActorsList v-if="actors.length > 0" :actors="actors"></ActorsList>
+  <h1 v-else>ELSE</h1>
+  <div class="btn-group">
+    <button
+      v-for="index in parseInt(pages)"
+      :key="index"
+      type="button"
+      class="btn btn-primary"
+    >
+      {{ index }}
+    </button>
+  </div>
 </template>
 <script lang="ts">
 import { Actor, Query } from "@/store/types";
 import { Options, Vue } from "vue-class-component";
 import { useStore, store } from "../store";
+import ActorsList from "@/components/ActorsList.vue"; // @ is an alias to /src
 
 @Options({
-  components: {},
+  components: {
+    ActorsList,
+  },
   data() {
     return {
       searchText: "",
@@ -36,6 +56,12 @@ import { useStore, store } from "../store";
       get(): boolean {
         const store = useStore();
         return store.state.loaded;
+      },
+    },
+    pages: {
+      get(): number {
+        const store = useStore();
+        return store.state.pages;
       },
     },
   },
