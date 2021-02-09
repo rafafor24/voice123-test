@@ -20,14 +20,30 @@
   <h1 v-else>ELSE</h1>
   <div class="btn-group">
     <button
+      type="button"
+      class="btn btn-primary"
+      :disabled="page == 1"
+      @click="getActors(page - 1)"
+    >
+      Previous
+    </button>
+    <button
       v-for="index in parseInt(pages)"
       :key="index"
       type="button"
       class="btn btn-primary"
-      :class="index == page ? 'disabled' : ''"
+      :disabled="index == page"
       @click="getActors(index)"
     >
       {{ index }}
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary"
+      :disabled="page == pages"
+      @click="getActors(page + 1)"
+    >
+      Next
     </button>
   </div>
 </template>
