@@ -2,7 +2,14 @@
   <div class="about">
     <h1>This is an about page</h1>
   </div>
-  <button @click="getActors(query)">Search🧐</button>
+  <textarea
+    placeholder="Term"
+    name="searchbar"
+    rows="1"
+    cols="25"
+    v-model="searchText"
+  ></textarea>
+  <button @click="getActors()">Search🧐</button>
 </template>
 <script lang="ts">
 import { Actor, Query } from "@/store/types";
@@ -13,8 +20,9 @@ import { useStore, store } from "../store";
   components: {},
   data() {
     return {
+      searchText: "",
       loading: false,
-      query: { search: "Test", page: 1 },
+      page: 1,
     };
   },
   computed: {
@@ -32,9 +40,13 @@ import { useStore, store } from "../store";
     },
   },
   methods: {
-    getActors(query: Query): void {
-      this.loading = true;
-      store.dispatch("fetchData", query);
+    getActors(): void {
+      if (this.searchText != "") {
+        const q: Query = { search: this.searchText, page: this.page };
+        this.loading = true;
+        store.dispatch("fetchData", q);
+        this.searchText = "";
+      }
     },
   },
 })
