@@ -14,6 +14,7 @@
     <button type="button" class="btn btn-primary" @click="getActors()">
       Search🧐
     </button>
+    <h1 v-if="actorsLoaded">Results for search '{{ lastSearch }}':</h1>
   </div>
   <ActorsList v-if="actors.length > 0" :actors="actors"></ActorsList>
   <h1 v-else>ELSE</h1>
@@ -23,6 +24,8 @@
       :key="index"
       type="button"
       class="btn btn-primary"
+      :class="index == page ? 'disabled' : ''"
+      @click="getActors(index)"
     >
       {{ index }}
     </button>
@@ -41,6 +44,7 @@ import ActorsList from "@/components/ActorsList.vue"; // @ is an alias to /src
   data() {
     return {
       searchText: "",
+      lastSearch: "",
       loading: false,
       page: 1,
     };
@@ -66,12 +70,18 @@ import ActorsList from "@/components/ActorsList.vue"; // @ is an alias to /src
     },
   },
   methods: {
-    getActors(): void {
+    getActors(page?: number): void {
       if (this.searchText != "") {
         const q: Query = { search: this.searchText, page: this.page };
         this.loading = true;
         store.dispatch("fetchData", q);
+        this.lastSearch = this.searchText;
         this.searchText = "";
+      } else if (this.lastSearch) {
+        this.page = page;
+        const q: Query = { search: this.lastSearch, page: page ? page : 0 };
+        this.loading = true;
+        store.dispatch("fetchData", q);
       }
     },
   },
