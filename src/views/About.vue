@@ -10,6 +10,7 @@
       type="text"
       class="form-control"
       id="usr"
+      @keyup.enter="getActors"
     />
     <button type="button" class="btn btn-primary" @click="getActors()">
       Search🧐
