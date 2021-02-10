@@ -1,36 +1,44 @@
 <template>
   <div class="center">
-    <div v-for="actor in actors" :key="actor.id" class="property-card">
-      <a :href="'https://voice123.com/' + actor.id" target="_blank">
-        <div
-          class="property-image"
-          v-bind:style="{
-            backgroundImage:
-              'url(' +
-              (actor.imageURL
-                ? actor.imageURL
-                : 'https://www.exoffender.org/wp-content/uploads/2016/09/empty-profile.png') +
-              ')',
-          }"
+    <div v-for="actor in actors" :key="actor.id">
+      <div class="property-card">
+        <a :href="'https://voice123.com/' + actor.id" target="_blank">
+          <div
+            class="property-image"
+            v-bind:style="{
+              backgroundImage:
+                'url(' +
+                (actor.imageURL
+                  ? actor.imageURL
+                  : 'https://www.exoffender.org/wp-content/uploads/2016/09/empty-profile.png') +
+                ')',
+            }"
+          >
+            <div class="property-image-title">
+              <!-- Optional <h5>Card Title</h5> If you want it, turn on the CSS also. -->
+            </div>
+          </div></a
         >
-          <div class="property-image-title">
-            <!-- Optional <h5>Card Title</h5> If you want it, turn on the CSS also. -->
-          </div>
-        </div></a
-      >
-      <div class="property-description">
-        <h5>{{ actor.name }}</h5>
-        <p>
-          {{ actor.stringify.slice(0, 20) }}
-          <strong>{{ actor.stringify.slice(20, 20 + actor.size) }}</strong>
-          {{ actor.stringify.slice(20 + actor.size) }}
-        </p>
-      </div>
-      <a href="#">
-        <div class="property-social-icons">
-          <!-- I would usually put multipe divs inside here set to flex. Some people might use Ul li. Multiple Solutions -->
+        <div class="property-description">
+          <h5>{{ actor.name }}</h5>
+          <p>
+            {{ actor.stringify.slice(0, 20) }}
+            <strong>{{ actor.stringify.slice(20, 20 + actor.size) }}</strong>
+            {{ actor.stringify.slice(20 + actor.size) }}
+          </p>
         </div>
-      </a>
+        <a href="#">
+          <div class="property-social-icons">
+            <!-- I would usually put multipe divs inside here set to flex. Some people might use Ul li. Multiple Solutions -->
+          </div>
+        </a>
+      </div>
+      <audio controls>
+        <source
+          v-bind:src="'https://voice123.com/mp3/' + actor.relevantAudio"
+        />
+        Your browser does not support the audio element.
+      </audio>
     </div>
   </div>
 </template>

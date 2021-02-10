@@ -4,6 +4,7 @@ export interface Actor {
     id: string;
     imageURL: string;
     stringify: string;
+    relevantAudio: string;
 }
 export interface Query {
     search: string;

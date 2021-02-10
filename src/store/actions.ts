@@ -38,7 +38,7 @@ export const actions: ActionTree<RootState, RootState> = {
                 }
                 return {
                     name: a.user.name, text: a.description, id: a.user.username, imageURL: a.user.picture_medium,
-                    stringify: fragment, size: size
+                    stringify: fragment, size: size, relevantAudio: a.relevant_sample.file
                 }
             })
             const resp: ResponseActors = { actors: actors, pages: response.headers[Object.keys(response.headers)[3]] }
