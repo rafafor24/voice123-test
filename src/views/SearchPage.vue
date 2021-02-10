@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div class="search">
     <h1>Voice123 Test</h1>
   </div>
   <div class="form-group">
@@ -18,12 +18,17 @@
     <h1 v-if="actorsLoaded">Results for search '{{ lastSearch }}':</h1>
   </div>
   <ActorsList v-if="actors.length > 0" :actors="actors"></ActorsList>
-  <h1 v-else>ELSE</h1>
+  <img
+    v-if="!actorsLoaded && loading"
+    class="logo-company"
+    src="@/assets/loading.gif"
+  />
   <div class="btn-group">
     <button
       type="button"
       class="btn btn-primary"
       :disabled="page == 1"
+      v-if="actorsLoaded"
       @click="getActors(page - 1)"
     >
       Previous
@@ -43,6 +48,7 @@
       class="btn btn-primary"
       :disabled="page == pages"
       @click="getActors(page + 1)"
+      v-if="actorsLoaded"
     >
       Next
     </button>
@@ -103,8 +109,12 @@ import ActorsList from "@/components/ActorsList.vue"; // @ is an alias to /src
     },
   },
 })
-export default class About extends Vue {}
+export default class SearchPage extends Vue {}
 </script>
 
 <style scoped>
+.logo-company {
+  width: 100px;
+  height: 100px;
+}
 </style>
