@@ -3,6 +3,7 @@ export interface Actor {
     text: string;
     id: string;
     imageURL: string;
+    stringify: string;
 }
 export interface Query {
     search: string;
