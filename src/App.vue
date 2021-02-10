@@ -1,30 +1,65 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/search">Search Voice Actors</router-link>
-  </div>
+  <nav>
+    <div class="navigation__about">
+      <router-link class="content" to="/">HOME </router-link>
+    </div>
+    <div class="navigation__compare">
+      <router-link class="content" to="/search">
+        SEARCH VOICE ACTORS
+      </router-link>
+    </div>
+  </nav>
   <router-view />
 </template>
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
 }
-
-#nav {
-  padding: 30px;
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 30px 5%;
+  background-color: white;
+  color: #f2f3f4;
+  border-radius: 3px;
+  border: 2px solid gray;
 }
-
-#nav a {
+nav .navigation__about {
   font-weight: bold;
-  color: #2c3e50;
+  font-size: 30px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
-
-#nav a.router-link-exact-active {
-  color: #42b983;
+nav .navigation__about:hover {
+  transform: scale(1.1, 1.1);
+  color: #1e88e5;
+}
+nav .navigation__about .content {
+  border-bottom: 8px solid #1e88e5;
+}
+nav .navigation__compare {
+  font-weight: bold;
+  font-size: 20px;
+}
+nav .navigation__compare:hover {
+  transform: scale(1.1, 1.1);
+  color: #1e88e5;
+}
+nav .navigation__compare .content {
+  border-bottom: 6px solid #1e88e5;
+}
+nav .navigation__name {
+  font-weight: bold;
+  font-size: 24px;
+}
+nav .navigation__name .content {
+  border-bottom: 6px solid #f2f3f4;
 }
 </style>

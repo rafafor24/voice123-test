@@ -117,4 +117,23 @@ export default class SearchPage extends Vue {}
   width: 100px;
   height: 100px;
 }
+
+button {
+  padding: 10px 20px;
+  margin: 15px;
+  background-color: #1e88e5;
+  color: #010101;
+  font-weight: bold;
+  font-size: 25px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 1px 2px 12px 0px rgba(89, 87, 87, 0.85);
+}
+button:hover {
+  transform: scale(1.1, 1.1);
+  background-color: #81b7e7;
+}
+h2:hover {
+  color: black;
+}
 </style>

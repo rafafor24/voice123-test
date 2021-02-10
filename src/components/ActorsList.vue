@@ -22,9 +22,9 @@
         <div class="property-description">
           <h5>{{ actor.name }}</h5>
           <p>
-            {{ actor.stringify.slice(0, 20) }}
+            {{ "..." + actor.stringify.slice(0, 20) }}
             <strong>{{ actor.stringify.slice(20, 20 + actor.size) }}</strong>
-            {{ actor.stringify.slice(20 + actor.size) }}
+            {{ actor.stringify.slice(20 + actor.size) + "..." }}
           </p>
         </div>
         <a href="#">
