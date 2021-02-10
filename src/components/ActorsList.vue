@@ -27,11 +27,6 @@
             {{ actor.stringify.slice(20 + actor.size) + "..." }}
           </p>
         </div>
-        <a href="#">
-          <div class="property-social-icons">
-            <!-- I would usually put multipe divs inside here set to flex. Some people might use Ul li. Multiple Solutions -->
-          </div>
-        </a>
       </div>
       <audio controls>
         <source

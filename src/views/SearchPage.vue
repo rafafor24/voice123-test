@@ -3,10 +3,10 @@
     <h1>Voice123 Test</h1>
   </div>
   <div class="form-group">
-    <label for="usr">Search:</label>
-    <input
+    <h2 for="usr">Search by keyword:</h2>
+    <textarea
       v-model="searchText"
-      placeholder="Term"
+      placeholder="Keyword Ex. Colors"
       type="text"
       class="form-control"
       id="usr"
@@ -135,5 +135,14 @@ button:hover {
 }
 h2:hover {
   color: black;
+}
+textarea {
+  border-radius: 5px;
+  font-size: 25px;
+  max-width: 50%;
+  margin: auto;
+  width: 50%;
+  border: 2px solid #1e88e5;
+  padding: 10px;
 }
 </style>
